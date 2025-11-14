@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 24px;
+    font-family: system-ui,Arial,sans-serif;
+    line-height: 1.5
+}
+
+.container {
+    max-width: 960px
+}
+
+.site-header, .site-footer {
+    padding: 12px 0
+}
+
+h1, h2 {
+    margin: 0 0 12px
+}
