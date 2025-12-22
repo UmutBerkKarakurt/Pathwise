@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def home(request):
@@ -158,3 +159,12 @@ def students(request):
         "timeline": timeline,
     }
     return render(request, "core/students.html", context)
+
+def home_router(request):
+    # login olmuşsa dashboard'a, değilse welcome'a
+    if request.user.is_authenticated:
+        return redirect("dashboard")
+    return redirect("welcome")
+
+def welcome(request):
+    return render(request, "core/welcome.html")

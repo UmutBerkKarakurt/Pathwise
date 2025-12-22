@@ -1,0 +1,54 @@
+﻿{% extends 'core/base.html' %}
+
+{% block title %}Welcome · Pathwise{% endblock %}
+{% block eyebrow %}Getting started{% endblock %}
+{% block page_title %}Welcome to Pathwise{% endblock %}
+{% block page_lead %}
+Track performance, engagement, and academic progress in one place.
+{% endblock %}
+
+{% block content %}
+
+<section class="card">
+    <h2>Get started</h2>
+    <p>
+        Pathwise helps you monitor learning outcomes, program alignment, and student progress
+        throughout the academic journey.
+    </p>
+
+    <div class="badge-row" style="margin-top:16px;">
+        <a href="{% url 'login' %}" class="chip">Log in</a>
+        <a href="{% url 'register' %}" class="chip soft">Create an account</a>
+    </div>
+</section>
+
+<section class="grid three">
+    <article class="card">
+        <p class="eyebrow">Overview</p>
+        <h3>Program insight</h3>
+        <p>
+            View program-level performance indicators and learning outcome mappings
+            across academic years.
+        </p>
+    </article>
+
+    <article class="card">
+        <p class="eyebrow">Tracking</p>
+        <h3>Student progress</h3>
+        <p>
+            Follow attendance, success rates, and milestones as students move
+            through the curriculum.
+        </p>
+    </article>
+
+    <article class="card">
+        <p class="eyebrow">Planning</p>
+        <h3>Data-informed decisions</h3>
+        <p>
+            Support curriculum planning and continuous improvement using
+            structured academic data.
+        </p>
+    </article>
+</section>
+
+{% endblock %}

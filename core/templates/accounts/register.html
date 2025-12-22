@@ -1,0 +1,21 @@
+﻿{% extends 'core/base.html' %}
+
+{% block title %}Register · Pathwise{% endblock %}
+{% block eyebrow %}Access{% endblock %}
+{% block page_title %}Create an account{% endblock %}
+{% block page_lead %}Fill the form below to create your account.{% endblock %}
+
+{% block content %}
+<section class="card">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="ghost-btn">Create account</button>
+    </form>
+
+    <p style="margin-top: 12px;">
+        Already have an account?
+        <a href="{% url 'login' %}">Log in</a>
+    </p>
+</section>
+{% endblock %}
