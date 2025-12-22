@@ -1,0 +1,75 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Courses · Pathwise{% endblock %}
+{% block eyebrow %}Course compass{% endblock %}
+{% block page_title %}Courses & learning outcomes{% endblock %}
+{% block page_lead %}An easy-to-navigate overview of courses and what students are expected to learn from them.{% endblock %}
+
+{% block content %}
+<section class="card">
+    <header class="section-header">
+        <div>
+            <p class="eyebrow">Current term</p>
+            <h2>Course lineup</h2>
+        </div>
+        <button class="ghost-btn">Export syllabus</button>
+    </header>
+    <div class="table-wrapper">
+        <table class="clean-table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Course title</th>
+                    <th>Learning outcomes</th>
+                    <th>Credits</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td>{{ course.code }}</td>
+                    <td>{{ course.title }}</td>
+                    <td>
+                        {% for lo in course.los %}
+                        <span class="chip">LO{{ lo }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>{{ course.credits }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="card split">
+    <div>
+        <h2>Learning outcomes</h2>
+        <p>
+            Each LO signals a guiding waypoint. They clarify what students should be able to do
+            by the end of the course sequence.
+        </p>
+
+        <ul class="lo-list">
+            <li><strong>LO1</strong> Model computing problems with mathematical rigor.</li>
+            <li><strong>LO2</strong> Apply core science and engineering principles to analyze real-world problems.</li>
+            <li><strong>LO3</strong> Design efficient algorithms under resource constraints.</li>
+            <li><strong>LO4</strong> Implement and evaluate software solutions using appropriate tools and methods.</li>
+            <li><strong>LO5</strong> Integrate hardware and software components for embedded or connected systems.</li>
+            <li><strong>LO6</strong> Address security, ethics, and societal impact in engineering decisions.</li>
+            <li><strong>LO7</strong> Communicate technical ideas effectively in written and oral form.</li>
+            <li><strong>LO8</strong> Lead collaborative software or project teams using modern tooling.</li>
+            <li><strong>LO9</strong> Engage in self-directed learning and professional development.</li>
+        </ul>
+    </div>
+    <div>
+        <h3>Journey cues</h3>
+        <div class="legend">
+            <span class="chip">Core</span>
+            <span class="chip soft">Applied</span>
+            <span class="chip accent">Capstone-ready</span>
+        </div>
+        <p>These small tags will help you quickly understand what kind of course it is — whether it's a core class, something more applied, or a capstone-level course.</p>
+    </div>
+</section>
+{% endblock %}

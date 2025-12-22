@@ -1,17 +1,56 @@
 {% load static %}
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% block title %}Pathwise{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header class="site-header"><h1>Pathwise</h1></header>
-    <main class="container">
+    <div class="sky-gradient"></div>
+    <header class="top-bar">
+        <div class="brand-mark">
+            <div class="brand-icon">
+                <span class="dot"></span>
+                <span class="path"></span>
+            </div>
+            <div>
+                
+                <p class="brand-title">Pathwise</p>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'outcomes' %}">Outcomes</a>
+            <a href="{% url 'students' %}">Students</a>
+        </nav>
+        <div class="nav-actions">
+            <span class="role-tag">Academic Term · Spring 2025</span>
+            <button class="ghost-btn">Sign in</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div>
+            <p class="eyebrow">{% block eyebrow %}Guiding every step of the journey{% endblock %}</p>
+            <h1>{% block page_title %}Welcome to Pathwise{% endblock %}</h1>
+            <p class="lead">{% block page_lead %}Monitor progress, outcomes, and student success across the Computer Engineering program.{% endblock %}</p>
+        </div>
+    </section>
+
+    <main class="page-container">
         {% block content %}{% endblock %}
     </main>
-    <footer class="site-footer"><small>� Pathwise</small></footer>
+
+    <footer class="site-footer">
+        <div class="footer-meta">
+            <span>© 2025 Pathwise · Academic Information System. </span>
+        </div>
+    </footer>
 </body>
 </html>

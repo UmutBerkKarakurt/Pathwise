@@ -1,9 +1,13 @@
 from django.urls import path
-from .views import home
-from .views import ace
+
+from . import views
 
 urlpatterns = [
-    path("", home, name="home"),
-    path("home/", home, name="home_alt"),
-    path("ace/", ace, name="ace"),
+    path("", views.dashboard, name="dashboard"),
+    path("dashboard/", views.dashboard, name="dashboard_alt"),
+    path("courses/", views.courses, name="courses"),
+    path("outcomes/", views.outcomes, name="outcomes"),
+    path("students/", views.students, name="students"),
+    path("home/", views.home, name="home"),
+    path("ace/", views.ace, name="ace"),
 ]

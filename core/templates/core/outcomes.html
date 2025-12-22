@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Outcomes · Pathwise{% endblock %}
+{% block eyebrow %}Program wisdom{% endblock %}
+{% block page_title %}Program outcomes & mapping{% endblock %}
+{% block page_lead %}Understand how Learning Outcomes (LO) contribute to Program Outcomes (PO) across the curriculum.{% endblock %}
+
+{% block content %}
+<section class="grid three">
+    {% for po in program_outcomes %}
+    <article class="card po-card">
+        <p class="eyebrow">Program outcome</p>
+        <h2>{{ po.code }}</h2>
+        <p>{{ po.text }}</p>
+        <div class="badge-row">
+            <span class="chip">Measured each term</span>
+            <span class="chip soft">Aligned</span>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+
+<section class="card">
+    <header class="section-header">
+        <div>
+            <p class="eyebrow">Alignment matrix</p>
+            <h2>LO ↔ PO map</h2>
+        </div>
+        <button class="ghost-btn">Download matrix</button>
+    </header>
+    <div class="table-wrapper matrix-wrapper">
+        <table class="matrix-table">
+            <thead>
+                <tr>
+                    <th>LO</th>
+                    {% for index in po_headers %}
+                    <th>{{ index }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in mapping %}
+                <tr>
+                    <td>{{ row.lo }}</td>
+                    {% for value in row.values %}
+                    <td>
+                        {% if value %}
+                            <span class="matrix-dot accent"></span>
+                        {% else %}
+                            <span class="matrix-dot"></span>
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="card split">
+    <div>
+        <h3>Assessment cadence</h3>
+        <p>
+            POs are tracked throughout the semester during our studio sessions, project reviews, and end-of-term jury presentations. Our instructors also add notes along the way so they can follow how we’re progressing more accurately.
+        </p>
+    </div>
+    <div>
+        <h3>Actions in progress</h3>
+        <ul class="checklist">
+            {% for action in actions %}
+                <li>{{ action }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{% endblock %}
