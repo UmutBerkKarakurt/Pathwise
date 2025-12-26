@@ -3,9 +3,12 @@
 {% block title %}Courses · Pathwise{% endblock %}
 {% block eyebrow %}Course compass{% endblock %}
 {% block page_title %}Courses & learning outcomes{% endblock %}
-{% block page_lead %}An easy-to-navigate overview of courses and what students are expected to learn from them.{% endblock %}
+{% block page_lead %}
+An easy-to-navigate overview of courses and what students are expected to learn from them.
+{% endblock %}
 
 {% block content %}
+
 <section class="card">
     <header class="section-header">
         <div>
@@ -14,34 +17,49 @@
         </div>
         <button class="ghost-btn">Export syllabus</button>
     </header>
-    <div class="table-wrapper">
-        <table class="clean-table">
-            <thead>
-                <tr>
-                    <th>Code</th>
-                    <th>Course title</th>
-                    <th>Learning outcomes</th>
-                    <th>Credits</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for course in courses %}
-                <tr>
-                    <td>{{ course.code }}</td>
-                    <td>{{ course.title }}</td>
-                    <td>
-                        {% for lo in course.los %}
+
+    <!-- 🔽 DERS KARTLARI -->
+    <div class="courses-grid">
+
+        {% for course in courses %}
+        <div class="course-card">
+
+            <!-- ÜST RENKLİ ALAN -->
+            <div class="course-cover"></div>
+
+            <!-- BEYAZ KUTU İÇERİK -->
+            <div class="course-content">
+
+                <span class="course-code">{{ course.code }}</span>
+
+                <h3 class="course-title">
+                    {{ course.title }}
+                </h3>
+
+                <!-- LEARNING OUTCOMES -->
+                <div class="course-los">
+                    {% for lo in course.los %}
                         <span class="chip">LO{{ lo }}</span>
-                        {% endfor %}
-                    </td>
-                    <td>{{ course.credits }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                    {% endfor %}
+                </div>
+
+                <!-- ALT BİLGİ -->
+                <div class="course-footer">
+                    <span class="credits">{{ course.credits }} ECTS</span>
+                    <a href="{% url 'software' %}" class="course-btn">
+                         View Course
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+
     </div>
 </section>
 
+<!-- ALT AÇIKLAMA KISMI AYNI KALDI -->
 <section class="card split">
     <div>
         <h2>Learning outcomes</h2>
@@ -62,6 +80,7 @@
             <li><strong>LO9</strong> Engage in self-directed learning and professional development.</li>
         </ul>
     </div>
+
     <div>
         <h3>Journey cues</h3>
         <div class="legend">
@@ -69,7 +88,10 @@
             <span class="chip soft">Applied</span>
             <span class="chip accent">Capstone-ready</span>
         </div>
-        <p>These small tags will help you quickly understand what kind of course it is — whether it's a core class, something more applied, or a capstone-level course.</p>
+        <p>
+            These small tags will help you quickly understand what kind of course it is — whether it's a core class, something more applied, or a capstone-level course.
+        </p>
     </div>
 </section>
+
 {% endblock %}

@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/courses.css' %}">
+
 </head>
 <body>
     <div class="sky-gradient"></div>
@@ -34,7 +37,8 @@
             <button class="ghost-btn">Sign in</button>
         </div>
     </header>
-
+    
+    {% block hero %}
     <section class="hero">
         <div>
             <p class="eyebrow">{% block eyebrow %}Guiding every step of the journey{% endblock %}</p>
@@ -42,6 +46,7 @@
             <p class="lead">{% block page_lead %}Monitor progress, outcomes, and student success across the Computer Engineering program.{% endblock %}</p>
         </div>
     </section>
+    {% endblock %}
 
     <main class="page-container">
         {% block content %}{% endblock %}

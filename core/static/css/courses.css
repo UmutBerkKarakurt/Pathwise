@@ -1,0 +1,70 @@
+/* 🔥 GRID – YAN YANA OLAYI BURASI */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* TEK TEK BEYAZ KUTULAR */
+.course-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* ÜST RENKLİ ALAN */
+.course-cover {
+    height: 80px;
+    background: #f3f4f6;
+}
+
+/* KART İÇİ */
+.course-content {
+    padding: 16px;
+}
+
+/* DERS KODU */
+.course-code {
+    font-size: 12px;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+/* DERS ADI */
+.course-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 8px 0 12px;
+    color: #111827;
+}
+
+/* LO’LAR */
+.course-los {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+/* ALT KISIM */
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.credits {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.course-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #2563eb;
+    color: #2563eb;
+    text-decoration: none;
+}

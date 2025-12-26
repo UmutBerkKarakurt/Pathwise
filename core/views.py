@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 
 def home(request):
@@ -44,21 +45,25 @@ def dashboard(request):
             "progress": 0,
         },
     ]
+
     attendance_trend = [
         {"label": "Laboratories", "delta": "+3.2%", "spark": "spark-1"},
         {"label": "Core lectures", "delta": "+1.4%", "spark": "spark-2"},
         {"label": "Project reviews", "delta": "-0.8%", "spark": "spark-3"},
     ]
+
     upcoming_milestones = [
         {"title": "Data Analysis assignment", "time": "Week 6"},
         {"title": "Group Project presentation", "time": "Week 9"},
         {"title": "Vocabulary quiz", "time": "Week 12"},
     ]
+
     context = {
         "cohorts": cohorts,
         "attendance_trend": attendance_trend,
         "upcoming_milestones": upcoming_milestones,
     }
+
     return render(request, "core/dashboard.html", context)
 
 
@@ -71,16 +76,19 @@ def courses(request):
         {"code": "ACU 216", "title": "Advanced English", "los": ["9"], "credits": 2},
         {"code": "ATA 101", "title": "Atatürk İlkeleri ve İnkılap Tarihi", "los": ["7"], "credits": 2},
     ]
+
     learning_outcomes = [
         {"code": "LO1", "description": "Model computing problems with mathematical rigor."},
         {"code": "LO3", "description": "Design efficient algorithms under resource constraints."},
         {"code": "LO5", "description": "Integrate hardware/software for embedded solutions."},
         {"code": "LO8", "description": "Lead collaborative software projects with modern tooling."},
     ]
+
     context = {
         "courses": courses_data,
         "learning_outcomes": learning_outcomes,
     }
+
     return render(request, "core/courses.html", context)
 
 
@@ -107,7 +115,6 @@ def outcomes(request):
         "Bitirme projesi için PO5 kapsamındaki hedefleri netleştirip paylaşıyoruz.",
     ]
 
-    # PO başlıkları (matrix tablosunun üstündeki sütun isimleri)
     po_headers = ["PO1", "PO2", "PO3", "PO4", "PO5"]
 
     context = {
@@ -116,6 +123,7 @@ def outcomes(request):
         "actions": actions,
         "po_headers": po_headers,
     }
+
     return render(request, "core/outcomes.html", context)
 
 
@@ -127,6 +135,7 @@ def students(request):
         "attendance": "92%",
         "credits": 96,
     }
+
     current_courses = [
         {"title": "CSE 331 · Exploratory Data Analysis", "grade": "AA", "attendance": "95%"},
         {"title": "CSE 321 · Data Systems", "grade": "BA", "attendance": "90%"},
@@ -135,21 +144,25 @@ def students(request):
         {"title": "ACU 216 · Advanced English", "grade": "BB", "attendance": "85%"},
         {"title": "ATA 101 · Atatürk İlkeleri ve İnkılap Tarihi", "grade": "AA", "attendance": "90%"},
     ]
+
     attendance_summary = [
         {"label": "Lectures", "value": "96%", "spark": "spark-2"},
         {"label": "Laboratories", "value": "91%", "spark": "spark-1"},
         {"label": "Project reviews", "value": "88%", "spark": "spark-3"},
     ]
+
     advisor_notes = [
         "Schedule systems lab observation · Week 7",
         "Share ethics case feedback · Week 8",
         "Review internship proposal · Week 10",
     ]
+
     timeline = [
         {"title": "Capstone sprint demo", "meta": "Scored 4.6 / 5 rubric · Feb 12"},
         {"title": "Industry mentor session", "meta": "Focus on embedded safety · Feb 6"},
         {"title": "Attendance alert cleared", "meta": "Recovered to 92% · Jan 24"},
     ]
+
     context = {
         "student": student_profile,
         "current_courses": current_courses,
@@ -157,4 +170,11 @@ def students(request):
         "advisor_notes": advisor_notes,
         "timeline": timeline,
     }
+
     return render(request, "core/students.html", context)
+
+
+def software(request):
+    return render(request, "core/lectures/software.html")
+
+

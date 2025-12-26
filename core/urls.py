@@ -10,4 +10,7 @@ urlpatterns = [
     path("students/", views.students, name="students"),
     path("home/", views.home, name="home"),
     path("ace/", views.ace, name="ace"),
+    path("software/", views.software, name="software"),
 ]
+
+
